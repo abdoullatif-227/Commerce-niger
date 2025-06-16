@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NigerCommerce - Plateforme e-commerce Nigérienne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #008080;
+            --secondary: #FFA500;
+            --dark: #1e2a38;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-actions a {
+            margin-left: 20px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-actions a i {
+            margin-right: 5px;
+            font-size: 20px;
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #006666;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #e69500;
+        }
+        
+        /* Categories Section */
+        .section {
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 25px 15px;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .category-card h3 {
+            font-size: 18px;
+            color: var(--dark);
+        }
+        
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin: 10px 0;
+            color: var(--dark);
+        }
+        
+        .product-seller {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        
+        .product-seller img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .product-actions button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .product-actions button:hover {
+            background: var(--light-gray);
+        }
+        
+        .product-actions button i {
+            color: var(--primary);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            background: var(--light);
+        }
+        
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .payment-logo {
+            background: white;
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 15px;
+        }
+        
+        .payment-logo img {
+            max-width: 100%;
+            max-height: 70px;
+        }
+        
+        /* Auth Forms */
+        .auth-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+        
+        .auth-banner {
+            flex: 1;
+            background: linear-gradient(to right, var(--primary), var(--dark));
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .auth-banner h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .auth-form {
+            flex: 1;
+            padding: 60px;
+        }
+        
+        .auth-form h2 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .search-bar {
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                flex: 1 0 50%;
+            }
+            
+            .auth-container {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div>
+                <i class="fas fa-phone"></i> +227 74962540 | 
+                <i class="fas fa-envelope"></i> contact@nigercommerce.ne
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i> +227 Niger
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="main-header">
+            <div class="logo">
+                <h1>Niger<span>-Commerce</span></h1>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher des produits, catégories...">
+                <button><i class="fas fa-search"></i> Rechercher</button>
+            </div>
+            
+            <div class="header-actions">
+                <a href="#"><i class="fas fa-user"></i> S'inscrire</a>
+                <a href="#"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+                <a href="#" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#"><i class="fas fa-list"></i> Catégories</a></li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Tendance</a></li>
+                    <li><a href="#"><i class="fas fa-percent"></i> Promotions</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i> Vendre</a></li>
+                    <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>La plateforme e-commerce du Niger</h2>
+            <p>Connectez les acheteurs et les vendeurs à travers tout le pays avec les meilleurs produits et services</p>
+            <div>
+                <a href="#" class="btn">Commencer à acheter</a>
+                <a href="#" class="btn btn-secondary">Vendre maintenant</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Catégories Populaires</h2>
+            <p>Parcourez nos catégories les plus populaires pour trouver ce que vous cherchez</p>
+        </div>
+        
+        <div class="categories">
+            <div class="category-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Électronique</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-tshirt"></i>
+                <h3>Mode & Vêtements</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-home"></i>
+                <h3>Maison & Cuisine</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-car"></i>
+                <h3>Automobile</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-baby"></i>
+                <h3>Bébés & Enfants</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-gem"></i>
+                <h3>Beauté & Bijoux</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-laptop"></i>
+                <h3>Informatique</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Produits Alimentaires</h3>
+            </div>
+              <div class="category-card">
+                <i class="fas fa-togs"></i>
+                <h3>Accessoires</h3>
+            </div>
+              <div class="category-card">
+                <i class="fas fa-den"></i>
+                <h3>Réparation & Montage</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="section" style="background-color: #f0f4f8;">
+        <div class="section-title">
+            <h2>Produits en Vedette</h2>
+            <p>Découvrez les produits les plus populaires sur notre plateforme</p>
+        </div>
+        
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Smartphone">
+                    <span class="product-tag">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Montre & portable</h3>
+                    <div class="product-price">120,000 FCFA</div>
+                    <div class="product-seller">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Vendeur">
+                        <span>MDT Boutique</span>
+                    </div>
+                    <div class="product-actions">
+                        <button><i class="fas fa-shopping-cart"></i></button>
+                        <button><i class="fas fa-heart"></i></button>
+                        <button><i class="fas fa-exchange-alt"></i></button>
+                        <button><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Boubou">
+                    <span class="product-tag">Promo</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">beaute cosmetique</h3>
+                    <div class="product-price">25,000 FCFA</div>
+                    <div class="product-seller">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Vendeur">
+                        <span>Fatima Boutique</span>
+                    </div>
+                    <div class="product-actions">
+                        <button><i class="fas fa-shopping-cart"></i></button>
+                        <button><i class="fas fa-heart"></i></button>
+                        <button><i class="fas fa-exchange-alt"></i></button>
+                        <button><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Artisanat">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Pêt à porter</h3>
+                    <div class="product-price">25,000 FCFA</div>
+                    <div class="product-seller">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Vendeur">
+                        <span>Tandja Boutique</span>
+                    </div>
+                    <div class="product-actions">
+                        <button><i class="fas fa-shopping-cart"></i></button>
+                        <button><i class="fas fa-heart"></i></button>
+                        <button><i class="fas fa-exchange-alt"></i></button>
+                        <button><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Céréales">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Ecouteur</h3>
+                    <div class="product-price">35,000 FCFA</div>
+                    <div class="product-seller">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Vendeur">
+                        <span>Le Baba</span>
+                    </div>
+                    <div class="product-actions">
+                        <button><i class="fas fa-shopping-cart"></i></button>
+                        <button><i class="fas fa-heart"></i></button>
+                        <button><i class="fas fa-exchange-alt"></i></button>
+                        <button><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Product 5 -->
+              <div class="product-card">
+                 <div class="product-img">
+                    <img src="Bugatti.png">
+                 </div>
+                 <div class="product-info">
+                    <h3 class="product-title">Voitures Bugatti</h3>
+                    <div class="product-price">50000000 FCFA</div>
+                    <div class="product-seller">
+                        <img src="IMG_6163.PNG" alt="Vendeur">
+                        <span>ima Automobile</span>
+                    </div>
+                    <div class="product-actions">
+                        <button><i class="fas fa-shopping-cart"></i></button>
+                        <button><i class="fas fa-heart"></i></button>
+                        <button><i class="fas fa-exchange-alt"></i></button>
+                        <button><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div> 
+    </section>
+    
+    <!-- Payment Methods -->
+    <section class="section payment-methods">
+        <div class="section-title">
+            <h2>Modes de Paiement</h2>
+            <p>Payez facilement avec nos solutions de paiement locales sécurisées</p>
+        </div>
+        
+        <div class="payment-logos">
+            <div class="payment-logo">
+                <img src="nita.jpg" alt="Mynita">
+            </div>
+            <div class="payment-logo">
+                <img src="amana.png" alt="Amanata">
+            </div>
+            <div class="payment-logo">
+                <img src="zeyna.jpg" alt="Zeyna Cash">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Auth Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Rejoignez Notre Plateforme</h2>
+            <p>Inscrivez-vous gratuitement pour commencer à acheter ou vendre</p>
+        </div>
+        
+        <div class="auth-container">
+            <div class="auth-banner">
+                <h2>Pourquoi s'inscrire?</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Publiez vos produits gratuitement</li>
+                    <li><i class="fas fa-check-circle"></i> Gagnez de l'argent avec vos ventes</li>
+                    <li><i class="fas fa-check-circle"></i> Accédez à des milliers d'acheteurs</li>
+                    <li><i class="fas fa-check-circle"></i> Paiements sécurisés via nos partenaires</li>
+                    <li><i class="fas fa-check-circle"></i> Support client 24/7</li>
+                </ul>
+            </div>
+            
+            <div class="auth-form">
+                <h2>Créer un Compte</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de Passe</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmer Mot de Passe</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn">S'inscrire</button>
+                    <div class="form-footer">
+                        <span>Déjà inscrit? <a href="#">Se connecter</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NigerCommerce</h3>
+                <p>La plateforme e-commerce leader au Niger, connectant acheteurs et vendeurs à travers tout le pays.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">À propos de nous</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">Vendre sur Niger Commerce</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Catégories</h3>
+                <ul>
+                    <li><a href="#">Électronique</a></li>
+                    <li><a href="#">Mode & Vêtements</a></li>
+                    <li><a href="#">Maison & Cuisine</a></li>
+                    <li><a href="#">Automobile</a></li>
+                    <li><a href="#">Produits Alimentaires</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>+227 Niger</li>
+                    <li><i class="fas fa-phone"></i> +227 74 96 25 40</li>
+                    <li><i class="fas fa-envelope"></i> contact@nigercommerce.ne</li>
+                    <li><i class="fas fa-clock"></i> 7/7jours H/24</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 @ NigerCommerce. Tous droits réservés.
+        </div>
+    </footer>
+    
+    <script>
+        // Simple cart count functionality
+        document.querySelectorAll('.product-actions button:first-child').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Add animation
+                cartCount.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    cartCount.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Inscription réussie! Bienvenue sur NigerCommerce.');
+        });
+    </script>
+</body>
+</html>
